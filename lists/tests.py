@@ -16,9 +16,10 @@ class HomePageTest(TestCase):
         #把这个对象传给home_page视图,得到响应对象,响应对象是HttpResponse类的实例,响应对象.content属性(发给用户的html)
         response = home_page(request)
         #希望响应对象以<html>开头
+        print (repr(response.content))
         self.assertTrue(response.content.startswith(b'<html>'))
         self.assertIn(b'<title>To-Do lists</title>',response.content)
-        self.assertTrue(response.content.endswith(b'</html>'))
+        self.assertTrue(response.content.strip().endswith(b'</html>'))
 
 # class SmokeTest(TestCase):
     # def test_bad_maths(self):
